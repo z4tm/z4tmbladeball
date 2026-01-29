@@ -11,7 +11,7 @@
 
 -- UI Library
 local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/xHeptc/Kavo-UI-Library/main/source.lua"))()
-local Window = Library.CreateLib("BLADE BALL PRO V2", "DarkTheme")
+local Window = Library.CreateLib("Zatm Software", "DarkTheme")
 
 -- Services
 local Players = game:GetService("Players")
