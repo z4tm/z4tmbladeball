@@ -1,5 +1,5 @@
 --[[
-    BLADE BALL PRO V2 - ULTIMATE FIX
+    Zatm Software - ULTIMATE FIX
     
     TRUE SINGLE CLICK (no double!)
     PER-BALL DECISION LOCK
@@ -11,7 +11,7 @@
 
 -- UI Library
 local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/xHeptc/Kavo-UI-Library/main/source.lua"))()
-local Window = Library.CreateLib("Zatm Software", "DarkTheme")
+local Window = Library.CreateLib("BLADE BALL PRO V2", "DarkTheme")
 
 -- Services
 local Players = game:GetService("Players")
@@ -677,23 +677,28 @@ local function UpdateBallESP()
     end)
 end
 
+-- GUI
+local AutoParryTab = Window:NewTab("Auto Parry")
+local ParrySection = AutoParryTab:NewSection("Auto Parry")
+
+-- Make Window toggleable
+local guiMain = game:GetService("CoreGui"):FindFirstChild("Zatm Software") or game:GetService("Players").LocalPlayer.PlayerGui:FindFirstChild("Zatm Software")
+
 UserInputService.InputBegan:Connect(function(input, gameProcessed)
     if gameProcessed then return end
     if input.KeyCode == Settings.MenuToggleKey then
         menuVisible = not menuVisible
-        Window:ToggleUI()
+        if guiMain then
+            guiMain.Enabled = menuVisible
+        end
     end
 end)
-
--- GUI
-local AutoParryTab = Window:NewTab("Auto Parry")
-local ParrySection = AutoParryTab:NewSection("Auto Parry")
 
 ParrySection:NewToggle("Enable Auto Parry", "Toggle", function(state)
     Settings.AutoParry = state
     if state then
         print("═══════════════════════════════════")
-        print("BLADE BALL PRO V2 - ULTIMATE")
+        print("Zatm Software - ULTIMATE")
         print("TRUE single click (no double!)")
         print("Per-ball decision lock")
         print("Fixed TTI (horizontal)")
@@ -789,25 +794,13 @@ ESPSection:NewToggle("Ball ESP", "Show", function(state) Settings.BallESP = stat
 
 local InfoTab = Window:NewTab("Info")
 local InfoSection2 = InfoTab:NewSection("About")
-InfoSection2:NewLabel("BLADE BALL PRO V2")
-InfoSection2:NewLabel("")
 InfoSection2:NewLabel("Creator: z4tm & stellar scripts")
-InfoSection2:NewLabel("")
-InfoSection2:NewLabel("ULTIMATE FIXES:")
-InfoSection2:NewLabel("No double click")
-InfoSection2:NewLabel("Decision lock per ball")
-InfoSection2:NewLabel("Fixed TTI (horizontal)")
-InfoSection2:NewLabel("Strict validation")
-InfoSection2:NewLabel("1v1-safe")
-InfoSection2:NewLabel("Auto ability")
 InfoSection2:NewLabel("")
 InfoSection2:NewButton("Discord Server", "Click to copy link", function()
     setclipboard("https://discord.gg/ff7p6hGM")
     print("Discord link copied to clipboard!")
     print("https://discord.gg/ff7p6hGM")
 end)
-InfoSection2:NewLabel("")
-InfoSection2:NewLabel("DELETE = Menu | X = Spam")
 
 -- Status Display
 local ScreenGui = Instance.new("ScreenGui")
@@ -831,7 +824,7 @@ local Title = Instance.new("TextLabel")
 Title.Size = UDim2.new(1, -10, 0, 22)
 Title.Position = UDim2.new(0, 5, 0, 5)
 Title.BackgroundTransparency = 1
-Title.Text = "BLADE BALL PRO V2"
+Title.Text = "Zatm Software"
 Title.TextColor3 = Color3.fromRGB(100, 200, 255)
 Title.TextSize = 14
 Title.Font = Enum.Font.GothamBold
@@ -998,7 +991,7 @@ end)
 if Settings.AntiRagdoll then ApplyAntiRagdoll() end
 
 print("═══════════════════════════════════")
-print("BLADE BALL PRO V2 - ULTIMATE")
+print("Zatm Software - ULTIMATE")
 print("═══════════════════════════════════")
 print("")
 print("ULTIMATE FIXES:")
